@@ -1,28 +1,33 @@
 var app = {
     initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
+        document.addEventListener('deviceready', this.updateEuroValue, false);
     },
 
-    onDeviceReady: function() {
-        var initElement = document.getElementById('initializing');
-        var resultsElement = document.getElementById('results');
+    updateEuroValue: function() {
         var xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function() {
+            var euroPrice,
+                displayText = '',
+                resultsElement;
+
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 if (xhr.status === 200) {
-                    console.log(xhr.responseText);
+                    euroPrice = JSON.parse(xhr.responseText);
+                    displayText = 'US $1 = &euro;' + parseFloat(euroPrice.rates.EUR);
                 } else {
-                    console.log('Error: ' + xhr.status);
+                    displayText = 'Error Connecting to API.'
                 }
+
+                resultsElement = document.getElementById('results');
+                resultsElement.innerHTML = displayText;
+                document.getElementById('initializing').setAttribute('style', 'display:none;');
+                resultsElement.setAttribute('style', 'display:block;');
             }
         };
 
-        xhr.open('GET', 'http://coinabul.com/api.php' , true);
+        xhr.open('GET', 'http://api.fixer.io/latest?base=USD&symbols=EUR' , true);
         xhr.send();
-
-        // initElement.setAttribute('style', 'display:none;');
-        // resultsElement.setAttribute('style', 'display:block;');
     }
 };
 
