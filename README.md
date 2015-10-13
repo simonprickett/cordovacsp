@@ -63,4 +63,32 @@ After cloning the repo and following the initial build instructions, you will be
 
 ## Transitioning Between States
 
-TODO
+When first cloned, the app is at step 1 (default Cordova configuration) and will fail to get the data from the API.
+
+To transition it to step 2 (fixed Content Security Policy meta tag, works on iOS <9 and Android):
+
+```
+cd <folder where repo was cloned>/app
+./step2.sh
+cordova build ios
+cordova build android
+```
+
+To then transition to step 3 (fixed Content Security Policy and patches iOS 9 ATS in the project's .plist file - works on all devices):
+
+```
+cd <folder where repo was cloned>/app
+./step3.sh
+cordova build ios
+cordova build android
+
+```
+
+To go back to step 1 (not working on iOS <9, 9 or Android):
+
+```
+cd <folder where repo was cloned>/app
+./step1.sh
+cordova build ios
+cordova build android
+```
