@@ -37,9 +37,19 @@ If your version doesn't begin with 5, or the cordova binary can't be found then 
 
 ## Clone and Initial Build
 
-Clone the GitHub repo to your Macintosh, then open up a Terminal and cd to wherever you cloned the repo.  To get the app running in the first of three demo states, follow these instructions:
+Clone the GitHub repo to your Macintosh, then open up a Terminal and cd to wherever you cloned the repo.  To get the app running in the first of three demo states, enter these commands:
 
-* TODO
+```
+cd <folder where repo was cloned>
+cd app
+cordova platform add ios android
+cordova build ios
+cordova build android
+```
+
+You should now be able to run the app in the emulators or on your device in the normal way.
+
+When first cloned, the app will be in the "Step 1" state (broken).
 
 ## App States
 
