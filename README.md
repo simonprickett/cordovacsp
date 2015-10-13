@@ -8,9 +8,32 @@ For iOS 9 / Xcode 7 users this also demonstrates the configuration of App Transp
 
 The app is very simple, it calls out to an exchange rate API (```http://api.fixer.io```) and aims to tell us the current value of the Euro in US Dollars.  It uses JQuery, but nothing about the Content Security Policy or ATS setup is framework specific - configurations apply to any JS framework.
 
-## App Setup
+## Environment Setup
 
-TODO
+**This project contains iOS specifics, so you will need to build it on a Macintosh.**
+
+You will need the following installed to be able to use this app properly:
+
+* Cordova CLI 5.3.3 or newer (from https://cordova.apache.org/)
+* XCode 7 or newer (must be XCode 7 as 6.x doesn't build for iOS 9 and use ATS)
+* Android SDK installed and SDK API level 22 (Android 5.1.1) or higher installed
+* Internet connection
+* Optional: Android emulator configured
+* Optional: Android and iOS device(s)
+
+To check you have Cordova CLI configured properly, open up a Terminal window on your Mac and type:
+
+```
+cordova -version
+```
+
+You should expect to see something like:
+
+```
+5.3.3
+```
+
+If your version doesn't begin with 5, or the cordova binary can't be found then update your Cordova version and Terminal path appropriately.
 
 ## App States
 
